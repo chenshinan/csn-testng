@@ -1,0 +1,4 @@
+testng:
+  username: AutomationTestUser
+  password: 123456
+  apiGateway: http://api.staging.saas.hand-china.com

@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="suite1" verbose="1">
+    <test name="test1">
+        <classes>
+            <class name="com.chenshinan.testng.UnitTest"/>
+        </classes>
+    </test>
+    <test name="test2">
+        <classes>
+            <class name="com.chenshinan.testng.ApiTest">
+                <methods>
+                    <include name="login" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
