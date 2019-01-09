@@ -110,18 +110,18 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!-- ReportNG配置 -->
-                    <properties>
-                        <property>
-                            <name>usedefaultlisteners</name>
-                            <value>false</value>
-                        </property>
-                        <property>
-                            <name>listener</name>
-                            <value>org.uncommons.reportng.HTMLReporter</value>
-                        </property>
-                    </properties>
-                    <workingDirectory>target/</workingDirectory>
+                    <!--&lt;!&ndash; ReportNG配置 &ndash;&gt;-->
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>usedefaultlisteners</name>-->
+                            <!--<value>false</value>-->
+                        <!--</property>-->
+                        <!--<property>-->
+                            <!--<name>listener</name>-->
+                            <!--<value>org.uncommons.reportng.HTMLReporter</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
+                    <!--<workingDirectory>target/</workingDirectory>-->
                 </configuration>
             </plugin>
 

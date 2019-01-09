@@ -1,12 +1,18 @@
 package com.chenshinan.testng.config;
 
+import com.chenshinan.testng.interceptor.HttpClientAuthInterceptor;
+import com.chenshinan.testng.utils.LoginUtil;
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.web.client.LocalHostUriTemplateHandler;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Collections;
 
 /**
  * @author shinan.chen
@@ -16,19 +22,18 @@ import org.springframework.core.env.Environment;
 public class TestConfiguration {
     @Autowired
     Environment environment;
+    @Autowired
+    LoginUtil loginUtil;
 
     @Bean
-    public TestRestTemplate restTemplate(ApplicationContext applicationContext) {
-        TestRestTemplate rest = new TestRestTemplate();
-        LocalHostUriTemplateHandler handler = new LocalHostUriTemplateHandler(
-                environment, "http");
-        rest.setUriTemplateHandler(handler);
-//        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
-//        HttpClient httpClient = HttpClientBuilder.create()
-//                .setRedirectStrategy(new LaxRedirectStrategy())
-//                .build();
-//        factory.setHttpClient(httpClient);
-//        rest.
-        return rest;
+    public RestTemplate restTemplate(ApplicationContext applicationContext) {
+        HttpClient httpClient = HttpClientBuilder.create().disableRedirectHandling().build();
+        RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
+        String accessToken = loginUtil.login(restTemplate);
+        HttpClientAuthInterceptor httpClientAuthInterceptor = new HttpClientAuthInterceptor(accessToken);
+        restTemplate.setInterceptors(Collections.singletonList(httpClientAuthInterceptor));
+        return restTemplate;
     }
+
+
 }
