@@ -2,12 +2,12 @@
 <suite name="suite1" verbose="1">
     <test name="test1">
         <classes>
-            <class name="com.chenshinan.testng.UnitTest"/>
+            <class name="com.chenshinan.testng.testUnit.UnitTest"/>
         </classes>
     </test>
     <test name="test2">
         <classes>
-            <class name="com.chenshinan.testng.ApiTest">
+            <class name="com.chenshinan.testng.testApi.ApiTest">
                 <methods>
                     <include name="login"/>
                 </methods>
@@ -22,22 +22,22 @@
             </run>
         </groups>
         <classes>
-            <class name="com.chenshinan.testng.GroupTest"/>
+            <class name="com.chenshinan.testng.testUnit.GroupTest"/>
         </classes>
     </test>
     <test name="test4">
         <classes>
-            <class name="com.chenshinan.testng.AnnotationTest"/>
+            <class name="com.chenshinan.testng.testUnit.AnnotationTest"/>
         </classes>
     </test>
     <test name="test5">
         <classes>
-            <class name="com.chenshinan.testng.FactoryTest"/>
+            <class name="com.chenshinan.testng.testUnit.FactoryTest"/>
         </classes>
     </test>
     <test name="test6" parallel="methods" thread-count="3">
         <classes>
-            <class name="com.chenshinan.testng.ParallelTest"/>
+            <class name="com.chenshinan.testng.testUnit.ParallelTest"/>
         </classes>
     </test>
 

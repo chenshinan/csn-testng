@@ -1,9 +1,7 @@
-package com.chenshinan.testng;
+package com.chenshinan.testng.testUnit;
 
 import org.springframework.util.StringUtils;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 /**
  * @author shinan.chen
@@ -24,7 +22,17 @@ public class GroupTest {
     @Parameters("db")
     @Test(groups = {"linux"})
     public void groupTest3(@Optional("oracle") String db) {
+        System.out.println("123123");
         assert db.equals("mysql");
     }
 
+    @BeforeGroups
+    public void beforeGroupsTest() {
+        System.out.println("GroupTest:beforeGroupsTest");
+    }
+
+    @AfterGroups(value = "linux")
+    public void afterGroupsTest() {
+        System.out.println("GroupTest:afterGroupsTest");
+    }
 }

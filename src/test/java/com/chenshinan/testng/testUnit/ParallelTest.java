@@ -1,4 +1,4 @@
-package com.chenshinan.testng;
+package com.chenshinan.testng.testUnit;
 
 import org.testng.annotations.Test;
 

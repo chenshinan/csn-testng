@@ -35,6 +35,4 @@ public class TestConfiguration {
         restTemplate.setInterceptors(Collections.singletonList(httpClientAuthInterceptor));
         return restTemplate;
     }
-
-
 }
