@@ -1,5 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="suite1" verbose="1">
+    <listeners>
+        <listener class-name="com.chenshinan.testng.listener.LogTestListener"/>
+    </listeners>
     <test name="test1">
         <classes>
             <class name="com.chenshinan.testng.testUnit.UnitTest"/>
