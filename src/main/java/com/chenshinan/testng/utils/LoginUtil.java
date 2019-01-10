@@ -28,9 +28,9 @@ public class LoginUtil {
         HttpHeaders requestHeaders = new HttpHeaders();
         requestHeaders.add("content-type", "application/x-www-form-urlencoded");
         MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
+        requestBody.add("username", configProperty.username);
         //密码加密
         String password = EncodeUtil.encodePassword(configProperty.password);
-        requestBody.add("username", configProperty.username);
         requestBody.add("password", password);
         HttpEntity<MultiValueMap> requestEntity = new HttpEntity<>(requestBody, requestHeaders);
         ResponseEntity<Object> userOauth = restTemplate.postForEntity(configProperty.apiGateway + "/oauth/login", requestEntity, Object.class);

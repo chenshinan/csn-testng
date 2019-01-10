@@ -9,9 +9,36 @@
         <classes>
             <class name="com.chenshinan.testng.ApiTest">
                 <methods>
-                    <include name="login" />
+                    <include name="login"/>
                 </methods>
             </class>
         </classes>
     </test>
+    <test name="test3">
+        <parameter name="db" value="mysql"/>
+        <groups>
+            <run>
+                <include name="linux"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.chenshinan.testng.GroupTest"/>
+        </classes>
+    </test>
+    <test name="test4">
+        <classes>
+            <class name="com.chenshinan.testng.AnnotationTest"/>
+        </classes>
+    </test>
+    <test name="test5">
+        <classes>
+            <class name="com.chenshinan.testng.FactoryTest"/>
+        </classes>
+    </test>
+    <test name="test6" parallel="methods" thread-count="3">
+        <classes>
+            <class name="com.chenshinan.testng.ParallelTest"/>
+        </classes>
+    </test>
+
 </suite>

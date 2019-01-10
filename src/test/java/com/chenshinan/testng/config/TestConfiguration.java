@@ -30,6 +30,7 @@ public class TestConfiguration {
         HttpClient httpClient = HttpClientBuilder.create().disableRedirectHandling().build();
         RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
         String accessToken = loginUtil.login(restTemplate);
+        //设置认证过滤器
         HttpClientAuthInterceptor httpClientAuthInterceptor = new HttpClientAuthInterceptor(accessToken);
         restTemplate.setInterceptors(Collections.singletonList(httpClientAuthInterceptor));
         return restTemplate;
