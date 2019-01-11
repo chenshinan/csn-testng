@@ -27,10 +27,12 @@ public class TestConfiguration {
 
     @Bean
     public RestTemplate restTemplate(ApplicationContext applicationContext) {
+        //设置http请求禁用重定向（这样才能获取到token）
         HttpClient httpClient = HttpClientBuilder.create().disableRedirectHandling().build();
         RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient));
+        //登录授权获取token
         String accessToken = loginUtil.login(restTemplate);
-        //设置认证过滤器
+        //设置认证拦截器
         HttpClientAuthInterceptor httpClientAuthInterceptor = new HttpClientAuthInterceptor(accessToken);
         restTemplate.setInterceptors(Collections.singletonList(httpClientAuthInterceptor));
         return restTemplate;
