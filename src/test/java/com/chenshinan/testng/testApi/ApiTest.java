@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.web.client.RestTemplate;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 /**
@@ -23,6 +24,7 @@ public class ApiTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void userSelf() {
+        Reporter.log("输入参数："+1);
         String url = configProperty.apiGateway + "/iam/v1/users/self";
         ResponseEntity<Object> responseEntity = restTemplate.getForEntity(url, Object.class);
         System.out.println(responseEntity.getBody());

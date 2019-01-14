@@ -8,27 +8,19 @@ import org.testng.TestListenerAdapter;
  * @since 2019/1/10
  */
 public class LogTestListener extends TestListenerAdapter {
-    private int m_count = 0;
-
     @Override
     public void onTestFailure(ITestResult tr) {
-        log("F");
+        System.out.println("执行失败");
     }
 
     @Override
     public void onTestSkipped(ITestResult tr) {
-        log("S");
+        System.out.println("执行跳过");
     }
 
     @Override
     public void onTestSuccess(ITestResult tr) {
-        log(".");
+        System.out.println("执行成功");
     }
 
-    private void log(String string) {
-        System.out.println(string);
-        if (++m_count % 40 == 0) {
-            System.out.println("");
-        }
-    }
 }
